@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用規約 | 凪 燈 NAGI AKARI</title>
+    <link rel="stylesheet" href="css/terms.css">
+</head>
+<body>
+
+    <section class="terms">
+        <div class="terms-inner">
+            <h1 class="reveal">利用規約</h1>
+            
+            <p class="terms-lead reveal delay-1">
+                この利用規約（以下「本規約」）は、凪 燈（以下「当方」）が提供するWeb制作および関連サービス（以下「本サービス」）の利用条件を定めるものです。ご依頼いただいた時点で、本規約に同意したものとみなします。
+            </p>
+
+            <div class="terms-block reveal">
+                <h2>第1条（契約の成立）</h2>
+                <p>本サービスに関する契約は、クライアントからの正式な制作依頼に対し、当方が承諾の通知を送付した時点で成立するものとします。</p>
+            </div>
+
+            <div class="terms-block reveal">
+                <h2>第2条（制作期間・納期）</h2>
+                <p>納期はヒアリング時に合意した日程を目標としますが、素材提供の遅延や大幅な仕様変更が発生した場合は、双方協議の上で延長できるものとします。</p>
+            </div>
+
+            <div class="terms-block reveal">
+                <h2>第3条（報酬および支払方法）</h2>
+                <p>報酬額は見積書に基づきます。原則として、納品月末締め翌月末払いにて、指定の銀行口座へ振り込むものとします（振込手数料はクライアント負担）。</p>
+            </div>
+
+            <div class="terms-block reveal">
+                <h2>第4条（修正およびキャンセル）</h2>
+                <p>無料修正回数は原則3回までとします。着手後のクライアント都合によるキャンセルについては、進行度に応じたキャンセル料を請求できるものとします。</p>
+            </div>
+
+            <div class="terms-block reveal">
+                <h2>第5条（著作権の帰属）</h2>
+                <p>納品物の著作権は、完済をもってクライアントに移転します。ただし、制作過程で作成したラフ案やパーツ等の著作権は当方に帰属します。</p>
+            </div>
+
+            <div class="terms-block reveal">
+                <h2>第6条（制作実績の公開）</h2>
+                <p>当方は、制作したWebサイトを自身のポートフォリオやSNSにて実績として公開できるものとします。非公開を希望される場合は、事前にお申し出ください。</p>
+            </div>
+
+            <div class="terms-block reveal">
+                <h2>第7条（免責事項）</h2>
+                <p>納品後の運用において発生した損害（売上の減少、データの消失等）について、当方は一切の責任を負わないものとします。</p>
+            </div>
+
+            <div class="terms-block reveal">
+                <h2>第8条（規約の変更）</h2>
+                <p>当方は、必要と判断した場合には、クライアントに通知することなくいつでも本規約を変更することができるものとします。</p>
+            </div>
+
+            <p class="terms-date reveal">最終更新日：2026年1月27日</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // 10%が見えたら発火
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // is-visibleクラスを付与してアニメーション開始
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            // すべてのrevealクラスを監視対象にする
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>

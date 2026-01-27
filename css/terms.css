@@ -1,0 +1,184 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   凪 燈 様 専用：利用規約（アニメーション込・独立型スタイル）
+   ========================================================================== */
+
+/* 1. 基本リセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    background-color: #0a0a0a; /* 背景：漆黒 */
+    overflow-x: hidden;
+}
+
+/* 2. セクション全体 */
+.terms {
+    padding: 120px 0;
+    color: #e0e0e0; /* 本文：オフホワイト */
+    font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "MS PMincho", serif;
+    line-height: 1.8;
+    min-height: 100vh;
+}
+
+.terms-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 3. タイトル（H1） */
+.terms h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #e0e0e0;
+    letter-spacing: 0.2em;
+    margin-bottom: 80px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+/* タイトル下の金のライン */
+.terms h1::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: #d4af37; /* メインゴールド */
+}
+
+/* 4. リード文 */
+.terms-lead {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 2.2;
+    text-align: center;
+    margin-bottom: 100px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    letter-spacing: 0.05em;
+}
+
+/* 5. 各条項ブロック */
+.terms-block {
+    margin-bottom: 60px;
+    position: relative;
+    padding-left: 30px;
+}
+
+/* 左側の金の縦線（グラデーション） */
+.terms-block::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    bottom: 5px;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        #d4af37, 
+        transparent
+    );
+    opacity: 0.2;
+    transition: opacity 0.6s ease;
+}
+
+/* ホバー時にラインを光らせる */
+.terms-block:hover::before {
+    opacity: 1;
+}
+
+.terms-block h2 {
+    font-size: 1.15rem;
+    color: #d4af37;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+}
+
+.terms-block p {
+    font-size: 0.85rem;
+    color: #e0e0e0;
+    line-height: 2.2;
+    opacity: 0.8;
+    text-align: justify;
+}
+
+/* 6. 最終更新日 */
+.terms-date {
+    margin-top: 120px;
+    text-align: right;
+    font-family: 'Times New Roman', serif;
+    font-size: 0.8rem;
+    color: #999;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 7. アニメーション（Reveal演出） */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+/* 表示状態 */
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 遅延設定（delay-1） */
+.delay-1 {
+    transition-delay: 0.3s;
+}
+
+/* 8. スマホ対応（レスポンシブ） */
+@media (max-width: 768px) {
+    .terms {
+        padding: 80px 0;
+    }
+
+    .terms h1 {
+        font-size: 1.6rem;
+        margin-bottom: 60px;
+    }
+
+    .terms-lead {
+        margin-bottom: 60px;
+        font-size: 0.8rem;
+        line-height: 2;
+    }
+
+    .terms-block {
+        padding-left: 20px;
+        margin-bottom: 45px;
+    }
+
+    .terms-block h2 {
+        font-size: 1rem;
+    }
+
+    .terms-block p {
+        font-size: 0.8rem;
+        line-height: 2;
+    }
+
+    .terms-date {
+        margin-top: 80px;
+    }
+}
