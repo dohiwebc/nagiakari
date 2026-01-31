@@ -1,0 +1,566 @@
+@charset "UTF-8";
+
+:root {
+    --bg-black: #0a0a0a;
+    --main-gold: #d4af37;
+    --main-purple: #6a5acd;
+    --text-main: #e0e0e0;
+    --text-sub: #999;
+    --font-serif: "Yu Mincho", "YuMincho", serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--bg-black); color: var(--text-main); font-family: var(--font-serif); line-height: 1.8; overflow-x: hidden; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+/* --- Hero --- */
+.about-hero { padding: 160px 0 80px; text-align: center; }
+.about-hero h1 { font-size: 3.5rem; letter-spacing: 0.3em; margin-bottom: 20px; }
+.about-hero p { font-size: 1rem; color: var(--text-sub); letter-spacing: 0.2em; }
+
+/* --- Profile Section --- */
+.about-profile { padding: 80px 0; }
+.profile-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: flex-start; }
+
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(135deg, #1a1a1a, #000);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    display: flex; justify-content: center; align-items: center;
+    margin-bottom: 30px;
+}
+
+/* 基本情報リストのスタイル */
+.personal-info dl {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 15px 0;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+.personal-info dt { color: var(--main-gold); font-family: 'Times New Roman', serif; font-style: italic; }
+.personal-info dd { color: var(--text-main); font-weight: 300; }
+
+.profile-text .label { font-size: 0.75rem; color: var(--main-gold); letter-spacing: 0.3em; }
+.profile-text h2 { font-size: 2rem; margin: 15px 0 30px; }
+.mission-text p { font-size: 0.95rem; line-height: 2.2; margin-bottom: 20px; opacity: 0.9; }
+
+/* --- Skills & Tools (前回と同じスタイル) --- */
+.about-skills { padding: 100px 0; background-color: rgba(255, 255, 255, 0.01); }
+.section-title { text-align: center; font-size: 2rem; letter-spacing: 0.2em; margin-bottom: 20px; }
+.section-title::after { content: attr(data-en); display: block; font-size: 0.7rem; color: var(--main-gold); margin-top: 5px; letter-spacing: 0.4em; }
+.section-lead { text-align: center; font-size: 0.9rem; color: var(--text-sub); margin-bottom: 60px; }
+.skill-gauge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 80px; max-width: 900px; margin: 0 auto; }
+.skill-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.progress-bar-container { height: 2px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
+.progress-bar-fill { height: 100%; width: 0; background: linear-gradient(to right, var(--main-purple), var(--main-gold)); transition: width 2s cubic-bezier(0.22, 1, 0.36, 1); }
+
+.tools-section { margin-top: 100px; text-align: center; }
+.tool-icons { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.tool-icon-box { width: 56px; height: 56px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; display: flex; justify-content: center; align-items: center; margin-bottom: 8px; font-size: 20px; transition: 0.4s; }
+.tool-item:hover .tool-icon-box { border-color: var(--main-gold); transform: translateY(-5px); }
+
+/* --- Footer Nav --- */
+.page-footer-nav { padding: 100px 0; text-align: center; }
+.back-link { font-size: 0.9rem; color: var(--main-gold); text-decoration: none; transition: 0.3s; }
+.back-link:hover { opacity: 0.7; }
+
+/* --- Reveal --- */
+.reveal { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.2s; }
+
+@media (max-width: 768px) {
+    .profile-grid { grid-template-columns: 1fr; gap: 40px; }
+    .skill-gauge-grid { grid-template-columns: 1fr; }
+}
+
+.activity-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 60px;
+    margin-top: 50px;
+}
+
+/* 曜日 */
+.day-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
+}
+.day-label { font-size: 0.9rem; color: var(--text-main); }
+.day-status { font-size: 0.8rem; color: var(--main-gold); font-weight: bold; }
+.status-sub { color: var(--text-sub); }
+.day-notes { font-size: 0.75rem; color: var(--text-sub); margin-top: 15px; }
+
+/* 時間帯 */
+.time-row {.about-history {
+    padding: 80px 0;
+}
+
+.history-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    border-left: 1px solid #222;
+    padding-left: 40px;
+    position: relative;
+}
+
+.history-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.history-item:last-child {
+    margin-bottom: 0;
+}
+
+.history-marker {
+    position: absolute;
+    left: -45px;
+    top: 10px;
+    width: 9px;
+    height: 9px;
+    background: #0a0a0a;
+    border: 2px solid #d4af37;
+    border-radius: 50%;
+}
+
+.history-period {
+    display: block;
+    font-size: 0.75rem;
+    color: #d4af37;
+    letter-spacing: 0.2em;
+}
+
+.history-item h4 {
+    font-size: 1.2rem;
+    margin: 5px 0 10px;
+    color: #e0e0e0;
+}
+
+.history-desc {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .history-timeline {
+        padding-left: 30px;
+    }
+}
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+}
+.time-row.highlighted {
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+.time-range {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.2rem;
+    color: var(--main-gold);
+    width: 140px;
+    flex-shrink: 0;
+}
+.time-info strong { display: block; font-size: 0.9rem; margin-bottom: 5px; }
+.time-info p { font-size: 0.8rem; color: var(--text-sub); line-height: 1.6; }
+
+@media (max-width: 850px) {
+    .activity-layout { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.about-history {
+    padding: 80px 0;
+}
+
+.history-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    border-left: 1px solid #222;
+    padding-left: 40px;
+    position: relative;
+}
+
+.history-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.history-item:last-child {
+    margin-bottom: 0;
+}
+
+.history-marker {
+    position: absolute;
+    left: -45px;
+    top: 10px;
+    width: 9px;
+    height: 9px;
+    background: #0a0a0a;
+    border: 2px solid #d4af37;
+    border-radius: 50%;
+}
+
+.history-period {
+    display: block;
+    font-size: 0.75rem;
+    color: #d4af37;
+    letter-spacing: 0.2em;
+}
+
+.history-item h4 {
+    font-size: 1.2rem;
+    margin: 5px 0 10px;
+    color: #e0e0e0;
+}
+
+.history-desc {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .history-timeline {
+        padding-left: 30px;
+    }
+}
+
+/* プロフィールテキストエリアの修正 */
+.profile-text {
+    text-align: center; /* 全体を中央寄せ */
+}
+
+.profile-text .label {
+    display: block; /* 中央寄せを機能させるため */
+    font-size: 0.75rem;
+    color: var(--main-gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 5px;
+}
+
+.profile-text h2 {
+    font-size: 2rem;
+    margin: 10px 0 30px;
+    letter-spacing: 0.1em;
+}
+
+.mission-text p {
+    font-size: 0.95rem;
+    line-height: 2.2;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    text-align: left; /* 長文は左寄せの方が見やすいため。もし文章も中央なら center に変更 */
+    max-width: 600px; /* 中央に寄った際、広がりすぎないよう制限 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-text {
+    text-align: center;
+    grid-column: 1 / -1; /* グリッド内で横いっぱいに使う場合 */
+    margin-top: 40px;
+}
+
+/* 一番上の大きなタイトル */
+.mission-title {
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* MISSIONラベル */
+.profile-text .label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--main-gold);
+    letter-spacing: 0.4em;
+    margin-bottom: 15px;
+    font-family: 'Times New Roman', serif;
+}
+
+/* 文章ブロックの調整 */
+.mission-text p {
+    font-size: 0.95rem;
+    line-height: 2.2;
+    margin-bottom: 24px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left; /* 読みやすさ重視で左寄せ */
+    opacity: 0.9;
+}
+
+/* 「制作への想い」の見出し自体の余白をリセット */
+.mission-title {
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px; /* ここを小さくしてMISSIONとの距離を詰めました */
+}
+
+/* MISSIONラベルと文章のブロック全体の調整 */
+.mission-content {
+    margin-top: 0;
+}
+
+/* 小文字のMISSIONラベル */
+.profile-text .label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--main-gold);
+    letter-spacing: 0.4em;
+    margin-bottom: 20px; /* MISSIONと下の本文との距離 */
+    font-family: 'Times New Roman', serif;
+    opacity: 0.8;
+}
+
+/* 本文の微調整 */
+.mission-text p {
+    font-size: 0.95rem;
+    line-height: 2.2;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+/* レイアウト全体の修正 */
+.activity-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* 左の曜日幅を固定し、右を可変に */
+    gap: 40px 80px; /* 横の隙間を広げて視認性を向上 */
+    margin-top: 50px;
+    align-items: start; /* 上揃えにして崩れを防止 */
+}
+
+/* 曜日のリスト */
+.activity-days {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.day-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 時間帯のリスト */
+.activity-times {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 各時間帯の行 */
+.time-row {
+    display: grid;
+    grid-template-columns: 140px 1fr; /* 時間（左）と詳細（右）をGridで固定 */
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+    align-items: baseline; /* テキストの底辺を揃える */
+}
+
+/* 強調表示（Core Work） */
+.time-row.highlighted {
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.time-range {
+    color: var(--main-gold);
+    font-family: 'Times New Roman', serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.time-info strong {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: var(--text-main);
+}
+
+.time-info p {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* レスポンシブ：タブレット以下 */
+@media (max-width: 850px) {
+    .activity-layout {
+        grid-template-columns: 1fr; /* 1カラムに */
+        gap: 40px;
+    }
+    
+    .time-row {
+        grid-template-columns: 1fr; /* 時間と詳細を縦並びに */
+        gap: 10px;
+    }
+}
+
+/* プロフィールグリッド（PC表示） */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-bottom: 100px;
+}
+
+/* 右側の「制作への想い」周りの余白 */
+.profile-right {
+    text-align: left;
+}
+
+.mission-title {
+    font-size: 2.2rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 5px; /* ラベルとの距離を詰める */
+}
+
+.profile-right .label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--main-gold);
+    letter-spacing: 0.4em;
+    margin-bottom: 30px;
+}
+
+/* 活動時間セクション（独立させたのでGridを再定義） */
+.activity-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+    margin-top: 50px;
+    align-items: start;
+}
+
+/* レスポンシブ：タブレット以下 */
+@media (max-width: 850px) {
+    .profile-grid, .activity-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .profile-left {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .mission-title, .profile-right .label {
+        text-align: center;
+    }
+}
+
+
+/* ナビゲーション（メニュー全体）を非表示にする */
+.navbar, 
+.menu-trigger, 
+.nav-list {
+    display: none !important;
+}
+
+/* ロゴを左端（または中央）に配置する調整 */
+.header-inner {
+    display: flex;
+    justify-content: flex-start; /* 左寄せにする場合 */
+    /* justify-content: center; に変えるとロゴが真ん中にきます */
+    padding: 15px 4%;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+/* ヘッダーの土台 */
+header {
+    width: 100%;
+    background: #0a0a0a; /* メインと同じ背景色 */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* ロゴを囲む枠の高さと余白 */
+.header-inner.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 左側に配置 */
+    padding: 20px 4%; /* メインページと同じ余白 */
+    min-height: 70px; /* バーの太さを維持 */
+    box-sizing: border-box;
+}
+
+/* 凪 燈（ロゴ全体）の設定 */
+.logo {
+    display: flex;
+    align-items: baseline; /* 漢字と英語の下揃え */
+    gap: 15px;            /* 漢字と英語の間隔 */
+    text-decoration: none;
+    color: #ffffff;       /* 漢字の色（白） */
+    font-weight: bold;
+}
+
+/* NAGI AKARI（英語部分）の色再現 */
+.logo .en {
+    font-size: 0.75rem;
+    color: var(--main-gold, #d4af37); /* メインの金色を適用 */
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* ホバーした時に少し明るくする（リンクだと分かりやすくするため） */
+.logo:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+/* terms.css の冒頭に追加 */
+body {
+    font-family: 'Shippori Mincho', serif;
+    background-color: #0a0a0a; /* 背景色も合わせておくとロゴが綺麗に見えます */
+    color: #ffffff;
+}
+
+.logo {
+    font-family: 'Shippori Mincho', serif;
+    /* その他のロゴ用CSS */
+}
+
+header {
+    position: fixed;     /* 画面の上部に固定 */
+    top: 0;              /* 一番上に配置 */
+    left: 0;             /* 左端から配置 */
+    width: 100%;         /* 横幅いっぱい */
+    z-index: 1000;       /* 他のコンテンツより手前に表示 */
+    background: #0a0a0a; /* 背景色（これがないと下の文字が透けます） */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* 境界線を薄く入れると綺麗です */
+}
+
+/* ヘッダーを固定すると、下のコンテンツがヘッダーの下に潜り込んでしまうので、
+   body またはメインコンテンツのトップに余白を作ります */
+body {
+    padding-top: 80px; /* ヘッダーの高さに合わせて数値を調整してください */
+}
